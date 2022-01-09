@@ -274,36 +274,63 @@ It is listed as a known issue.
         2. Text has intentionally been kept to an absolute minimum. 
         3. At the top of the page are the top navigation bar which contains the Spincycle name and the main navigation bar below that which contains the various product categories.
     5. As a visiting user, I want to be able to easily navigate throughout the site
+
         1. The top of every page is reserved for the navigation bars. 
         2. The top navigation bar contains the Spincycle name (which also serves as a link to the Welcome page), the search bar and to the right the links to 'My Account' and the shopping bag with the current amount to be charged.
         3. Below the top navigation bar is the main navigation bar which contains the buttons for 'All Products', 'Vinyl', Cd's' and 'Special Offers'. Each of these contains a dropdown menu with further sub-classifications to allow the customer to drill down to their desired product category.
         4. The main navigation bar is reduced to a hamburger menu on mobile screens. The distinction between top and main navigation bar is otherwise not visible to the users.
         5. The various buttons on the respective pages are clearly marked and provide the expected functionality. The functionality is confirmed by flash messages.
     6. As a visiting user, I want to be able to search for specific items
+
         1. The top navigation bar which is always visible on all screens contains a search bar
         2. The main navigation bar below that contains the buttons for 'All Products', 'Vinyl', Cd's' and 'Special Offers'. Each of these contains a dropdown menu with further sub-classifications to allow the customer to drill down to their desired product category. 
     7. As a visiting user, I want to be able to make a purchase
+
         1. The ability to make a purchase is available to all users. It intentionally does not require the creation of an account or a login process.
     8. As a visiting user, I want to be able to distinguish between categories
+
         1. The main navigation bar contains the buttons for 'All Products', 'Vinyl', Cd's' and 'Special Offers'. Each of these contains a dropdown menu with further sub-classifications to allow the customer to drill down to their desired product category.
         2. When the user selects a particular subcategory, the page will display the selected category below the 'Products' heading.
         3. When the user selects the bottom option of the individual dropdown menus ('All Products', 'All vinyl', 'All CD's' and 'All Specials'), the page will display the available sub-categories for that category as buttons. For instance in 'All vinyl' the page will have the buttons 'Classical vinyl', 'Pop-vinyl', 'Folk-vinyl' and 'Oldies-vinyl'. 
     9. As a visiting user, I want to be able to register/create a profile
+
         1. The top navigation bar contains the link 'My Account' which when selected displays the dropdown menu of 'Register' and 'Login'
         2. The checkout form also contains the call to create an account or login.
         3. Selecting 'Register' in the top navigation bar or 'Create an account' in the checkout form leads the user to the Sign up page.
+        4. In case of a problem an appropriate error message is displayed allowing the user to correct the mistake.
+        5. Upon successful creation of an account, the user is taken to the confirm email page informing them a verification email has been sent to the email address they provided and the need to follow the link contained therein to complete the process. An appropriate alert is also displayed.
 
 -   #### Registered User Goals
 
-    3. As a registered user, I want to be able to easily navigate throughout the site.
+    10. As a registered user, I want to be able to login/log out.
 
-        1. The buttons on the navbar provide the user with clearly marked links to the respective pages. These buttons are the same across all pages. [View](https://github.com/MSierag/SiteStorage/blob/main/static/images/testing/user-navbar.png?raw=true)
-        2. The various buttons on the respective pages are clearly marked and provide the expected functionality. The functionality is confirmed by flash messages.
+        1. The top navigation bar which is visible on all pages contains the link 'My Account' which when selected displays the dropdown menu of 'Register' and 'Login'.
+        2. Selecting 'Login' leads the user to the sign in page.
+        3. While logged in / signed in the user can select 'My Account' to access the now updated dropdown menu with the options 'My Profile' and 'Logout'.
+        4. Selecting 'Logout' leads the user to the sign out page. Here the user is presented with two buttons: 'Cancel' and 'Sign out'.
+        5. Selecting 'Sign out' leads the user to the Welcome page while displaying an appropriate success message of 'You have signed out!'
         
-    4. As a registered user, I want to be able to perform full CRUD functionality.
+    11. As a registered user, I want to be able to check my profile data
         
-        1. CRUD functionality is provided for items and locations. Once logged in the user has access to the buttons on the navbar which provide the desired functionality reinforced by flash messages. Numerous screenshots can be found 
-        [here](https://github.com/MSierag/SiteStorage/tree/main/static/images/testing)
+        1. While logged in / signed in the user can select 'My Account' to access the now updated dropdown menu with the options 'My Profile' and 'Logout'.
+        2. Selecting 'My Profile' leads the user to the Profile page which displays the default delivery information as previously provided by the user as well as the order history(if any). 
+        
+    12. As a registered user, I want to be able to edit my profile data
+
+        1. While logged in / signed in the user can select 'My Account' to access the now updated dropdown menu with the options 'My Profile' and 'Logout'.
+        2. Selecting 'My Profile' leads the user to the Profile page which displays the default delivery information as previously provided by the user as well as the order history(if any). 
+        3. The user has the option of updating the default delivery information.
+
+    13. As a registered user, I want to be able to view my purchase history
+
+        1. While logged in / signed in the user can select 'My Account' to access the now updated dropdown menu with the options 'My Profile' and 'Logout'.
+        2. Selecting 'My Profile' leads the user to the Profile page which displays the default delivery information as previously provided by the user as well as the order history(if any).
+
+-   #### Customer (both visiting and registered users) Goals
+
+    14. As a customer, I want to be able to view details of the items
+
+        1. 
                       
     
 ### Known Issues
