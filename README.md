@@ -45,24 +45,20 @@ The purpose of this app is to provide an easy to use platform for a construction
         
 -   ### Design
     -   #### Colour Scheme
-        -   There are six colours used throughout the site, the first three are the main colours and the remaining three are used for accents.
-        ##### Main colours
-           ![MaterializeCSS rendering of main colour scheme](https://github.com/MSierag/SiteStorage/blob/main/static/images/main-colours.jpg?raw=true)
-            
-            The colour #009688 was chosen from the MaterializeCSS colour options as it approaches the colour used by the German multinational, this is the main colour throughout the site. The colours #26a69a and #4db6ac are variations on this colour used where some additional contrast with the background was needed.
+        The use of colours has been kept to an absolute minimum on this site so as not to interfere with the product images. The background is kept white and the text black. The only time colours are used they are used for accents on messages or icons.
+        
         ##### Accent colours
            ![Coolors rendering of effect colourscheme](https://github.com/MSierag/SiteStorage/blob/main/static/images/accent-colours.png?raw=true)
             
-            The colours #4caf50, #f4436, and #03a9f4 are accent colours. They are used on buttons throughout the site. 
     -   #### Typography
-        -   The font used throughout the site are the standard fonts defined by MaterializeCSS.
+        -   The font used throughout the site is 'Lato' from Google Fonts.
 
 *   ### Wireframes
 Due to the high number of pages and limited content on them I decided against creating wireframes in various formats as there would be very little difference between them.
 The wireframes I did make can be viewed here [View](https://github.com/MSierag/SiteStorage/tree/main/static/images/wireframes)
 
 ## Database schema
-The database for this website is run through MongeDB, the schema can be found below.
+The database for this website is run through HerokuPostgres, the schema can be found below.
 
 ![Dbdiagram.io rendering of the database schema](https://github.com/MSierag/SiteStorage/blob/main/static/images/dbschema.png?raw=true)
 
@@ -358,8 +354,7 @@ It is listed as a known issue.
         3. Clicking either of these buttons leads the user to the checkout page which contains a form to be completed with the delivery information on the left and the order summary on the right.
         4. If the user is registered and has previously stored delivery information the form will be pre-filled with this information. Alternatively, the user can click the link provided to create an account or log in.
         5. The payment process is handled by Stripe to ensure secure payment.
-                      
-    
+                
 ### Known Issues
 
 -   On mobile devices with a screen narrower than 360px the contents of the card section on index.html pushed out of alignment.
