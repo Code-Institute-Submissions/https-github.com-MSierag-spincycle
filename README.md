@@ -1,7 +1,7 @@
 <h1 align="center">Spincycle Records</h1>
 
 [View the live project here.](https://github.com/MSierag/SiteStorage)
-[or view it here](https://site-storage.herokuapp.com/)
+[or view it here](https://spincycle-records.herokuapp.com/)
 
 ## Purpose of the website
 
@@ -15,16 +15,34 @@ The purpose of this app is to provide an easy to use platform for a construction
 
     -   #### Owner Goals
 
-        1. As an owner, I want to keep out unregistered visitors
-    
+        1. As an owner, I want to allow unregistered visitors to shop
+        2. As an owner, I want to encourage unregistered visitors to register
+        3. As an owner, I want to restrict CRUD functionality on the site
+            
     -   #### Visiting User Goals
 
-        2. As a visiting user, I want to be able to register/login to use the site. 
+        4. As a visiting user, I want to be able to auickly understand the purpose of the site
+        5. As a visiting user, I want to be able to easily navigate throughout the site
+        6. As a visiting user, I want to be able to search for specific items
+        7. As a visiting user, I want to be able to make a purchase
+        8. As a visiting user, I want to be able to distinguish between categories        
+        9. As a visiting user, I want to be able to register/create a profile 
     
     -   #### Registered User Goals
 
-        3. As a registered user, I want to be able to easily navigate throughout the site.
-        4. As a registered user, I want to be able to perform full CRUD functionality.        
+        10. As a registered user, I want to be able to login/log out
+        11. As a registered user, I want to be able to check my profile data
+        12. As a registered user, I want to be able to edit my profile data
+        13. As a registered user, I want to be able to view my purchase history
+
+    -   #### Customer (both visiting and registered users) Goals
+
+        14. As a customer, I want to be able to view details of the items
+        15. As a customer, I want to be able to adjust the number of items to purchase
+        16. As a customer, I want to be able to easily identify items on special offer
+        17. As a customer, I want to be able to view my shopping basket
+        18. As a customer, I want to be able to know the exact cost
+
         
 -   ### Design
     -   #### Colour Scheme
