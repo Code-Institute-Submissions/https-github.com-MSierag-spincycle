@@ -39,10 +39,9 @@ The purpose of this app is to provide an easy to use platform for a construction
 
         14. As a customer, I want to be able to view details of the items
         15. As a customer, I want to be able to adjust the number of items to purchase
-        16. As a customer, I want to be able to easily identify items on special offer
-        17. As a customer, I want to be able to view my shopping basket
-        18. As a customer, I want to be able to know the exact cost
-
+        16. As a customer, I want to be able to view my shopping basket
+        17. As a customer, I want to be able to know the exact cost
+        18. As a customer, I want to be able to make a secure purchase
         
 -   ### Design
     -   #### Colour Scheme
@@ -273,6 +272,7 @@ It is listed as a known issue.
         1. Upon reaching the Welcome page, users are automatically greeted with the clean and easily readable page which contains the background image of a vinyl record playing with the text 'Your vintage record in stock here' and a button labelled 'Shop Now'. [View](https://github.com/MSierag/SiteStorage/blob/main/static/images/testing/welcome.png?raw=true)
         2. Text has intentionally been kept to an absolute minimum. 
         3. At the top of the page are the top navigation bar which contains the Spincycle name and the main navigation bar below that which contains the various product categories.
+
     5. As a visiting user, I want to be able to easily navigate throughout the site
 
         1. The top of every page is reserved for the navigation bars. 
@@ -330,7 +330,34 @@ It is listed as a known issue.
 
     14. As a customer, I want to be able to view details of the items
 
-        1. 
+        1. On the Products page, the user is provided with condensed information on the various products consisting of the image, name, price, category and rating.
+        2. Clicking on the product image, the user is lead to the product's detail page which displays the same information as well as a description, a quantity selector and two buttons labelled 'Keep shopping' and 'Add to bag'.
+
+    15. As a customer, I want to be able to adjust the number of items to purchase
+
+        1. On the product's detail page there is a quantity selector which is set to '1' by default.
+        2. By clicking the plus and minus signs on either side of the selector, the user is able to adjust the quantity.
+        3. Alternatively, the user may opt to alter the number displayed in the quantity selector directly.
+        4. On the shopping bag page the user also has the option to adjust the quantity or remove the item altogether befor proceeding to the checkout.
+
+    16. As a customer, I want to be able to view my shopping basket
+
+        1. The top navigation bar contains a link to the shopping basket with the current amount contained therein.
+        2. Clicking the shopping basket icon on the top navigation bar leads the user to the shopping bag page.
+
+    17. As a customer, I want to be able to know the exact cost
+
+        1. On the shopping bag page, the exact cost is displayed to the bottom right hand side. 
+        2. The cost is broken down by Bag total, Delivery (if the threshold for free delivery has not been met) and the Grand total.
+        3. Below the Grand total the user is informed in red which additional amount will secure free delivery if the threshold has not been met.
+
+    18. As a customer, I want to be able to make a secure purchase
+
+        1. On the shopping bag page in the bottom right hand corner is a button labelled 'Secure checkout'
+        2. Alternatively, when an item has been added successfully a success message is displayed also containing a button labelled 'Secure checkout'
+        3. Clicking either of these buttons leads the user to the checkout page which contains a form to be completed with the delivery information on the left and the order summary on the right.
+        4. If the user is registered and has previously stored delivery information the form will be pre-filled with this information. Alternatively, the user can click the link provided to create an account or log in.
+        5. The payment process is handled by Stripe to ensure secure payment.
                       
     
 ### Known Issues
