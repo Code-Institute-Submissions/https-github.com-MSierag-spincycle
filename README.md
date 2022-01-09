@@ -258,8 +258,13 @@ It is listed as a known issue.
 ### Testing User Stories from User Experience (UX) Section
 
 -   #### Owner Goals
-    1. As an owner, I want to keep out unregistered visitors to the site.
-        1. The Welcome page has only two buttons which allow a visitor to either register or login. There is no navigation bar to ensure there is no other way to enter the site than through these two buttons. 
+    1. As an owner, I want to allow unregistered visitors to shop.
+        1. The website allows all users (registered or unregistered) to view items, select them for purchase and complete a purchase without the need to create a profile or login. 
+    2. As an owner, I want to encourage unregistered visitors to register
+        1. Although all users are allowed to complete the purchase process without the requirement of registration, the navigation bar at the top includes a button labelled 'My Account' as gently encouragement to register.
+        2. During the checkout process, customers are gently encouraged to create an account or login in the checkout form.
+    3. As an owner, I want to restrict CRUD functionality on the site
+        1. The ability to make changes to the product inventory is linked to the Product Management section. This section is only available to the admin superuser to ensure no unauthorised changes can be made. 
        
 -   #### Visiting User Goals
 
