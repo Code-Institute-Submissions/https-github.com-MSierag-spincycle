@@ -64,9 +64,7 @@ The database for this website is run through HerokuPostgres, the schema can be f
 
 
 ## Features
--   Navbar at the top of the page is not visible on the Welcome page, but on all subsequent pages. The Register and Login pages 
-    show no buttons on the navbar yet. Once the user is successfully logged in the navbar displays the buttons "Home", "New item", "Locations" and "Logout". The buttons have a hover effect.
--   Delete functions throughout the site are intentionally without defensive programming. 
+-   Top navbar at the top of the page is visible on all pages. The main navbar is visible on screensizes upwards of a tablet.
 
 ### Existing features
 
@@ -74,17 +72,15 @@ The database for this website is run through HerokuPostgres, the schema can be f
 
 ##### Welcome page
 
--   Large title welcomes visitor to SiteStorage. 
+-   Large title welcomes visitor to Spincycle. 
 
 -   A card the text Please register / login below is displayed underneath the title.
 
--   Call to action button labelled "Register" which when clicked opens the Register page.
+-   Call to action button labelled "Shop now" which when clicked opens the Products page.
 
--   Call to action button labelled "Login" which when clicked opens the Login page. 
+-    
 
--   The page is intentionally without a navbar, to ensure only registered users enter the site.  
-
-##### Register page
+##### Products page
 
 -   Top of the screen shows the navbar which is empty apart from the logo, no further buttons visible to visitors.
 
@@ -94,7 +90,7 @@ The database for this website is run through HerokuPostgres, the schema can be f
         -if the registration was successfull, the user is redirected to the Profile page with a flash message of "You are now registered"
         -if the registration was unsuccessfull, the user receives a flash message "Username already exists" and is redirected to the Registration page.
 
-##### Login page
+##### Product detail page
 
 -   Top of the screen shows the navbar which is empty apart from the logo, no further buttons visible to visitors.
 
@@ -112,7 +108,7 @@ The database for this website is run through HerokuPostgres, the schema can be f
 
 -   Below this section is a simple statement invites the user to select a task above. 
 
-##### Home page
+##### Shopping bag page
 
 -   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
 
@@ -124,7 +120,7 @@ The database for this website is run through HerokuPostgres, the schema can be f
     -   The Used button serves as the delete function. When pushed, the item is deleted from the database and the user receives a flash message of "Item deleted"
     -   The Edit button when pushed redirects the user to the Edit Item page
 
-##### New Item page
+##### Product Management page
 
 -   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
 
@@ -136,7 +132,7 @@ The database for this website is run through HerokuPostgres, the schema can be f
     -if all fields were filled out correctly, the user is redirected to the Home page where the item has been added to the list and a flash message reads "Item added successfully"
     -if all fields were not filled out correctly, the user is alerted to the missing or incorrect information by the validation functionality.
 
-##### Edit Item page
+##### Sign up page
 
 -   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
 
@@ -149,7 +145,7 @@ The database for this website is run through HerokuPostgres, the schema can be f
     -Edit Item will, if all fields were filled out correctly, redirect the user to Home page with a flash message of "Item updated successfully" 
     -Edit Item will, if all fields were not filled out correctly, alert the user to the missing or incorrect information by the validation functionality.
 
-##### Locations page
+##### Sign in page
 
 -   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
 
@@ -161,7 +157,7 @@ The database for this website is run through HerokuPostgres, the schema can be f
     -   The Delete button deletes the location from the database and the user receives a flash message of "Location deleted successfully"
     -   The Edit button when pushed redirects the user to the Edit Location page
 
-##### Add location page
+##### Checkout page
 
 -   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
 
@@ -170,18 +166,6 @@ The database for this website is run through HerokuPostgres, the schema can be f
 -   Middle section holds a form with a single field to be completed by the user to add a new location to the database. 
 
 -   At the bottom of the form is a large button labelled Add location which when pushed redirects the user to the Locations page where the new location has been added and a flash message of "New storage location added".
-
-##### Edit location page
-
--   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
-
--   Below the navbar the page title of Edit Location is displayed.
-
--   Middle section holds a form with a single prefilled field to be completed by the user to edit the current location in the database. 
-
--   At the bottom of the form there are two large buttons labelled Cancel and Edit Item 
-    -Cancel takes the user back to the Locations page 
-    -Edit Location will redirect the user to Locations page with a flash message of "Location updated successfully" 
 
 ### Future features
 
@@ -207,8 +191,8 @@ The database for this website is run through HerokuPostgres, the schema can be f
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 1. [GitHub:](https://github.com/)
     - GitHub is used to store the projects code after being pushed from Git.
-1. [MongoDB:](https://www.mongodb.com/)
-    - MongoDB is used for the database. 
+1. [AWS:](https://www.mongodb.com/)
+    - AWS S3 is used as storage for static files. 
 1. [Heroku:](https://heroku.com/)
     - Herokuapp is the platform used to display the project after being pushed from Git.
 1. [Balsamiq:](https://balsamiq.com/)
