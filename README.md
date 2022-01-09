@@ -21,7 +21,7 @@ The purpose of this app is to provide an easy to use platform for a construction
             
     -   #### Visiting User Goals
 
-        4. As a visiting user, I want to be able to auickly understand the purpose of the site
+        4. As a visiting user, I want to be able to quickly understand the purpose of the site
         5. As a visiting user, I want to be able to easily navigate throughout the site
         6. As a visiting user, I want to be able to search for specific items
         7. As a visiting user, I want to be able to make a purchase
@@ -268,11 +268,30 @@ It is listed as a known issue.
        
 -   #### Visiting User Goals
 
-    2. As a visiting user, I want to be able to register/login to use the site.
+    4. As a visiting user, I want to be able to quickly understand the purpose of the site.
 
-        1. Upon reaching the Welcome page, users are automatically greeted with the clean and easily readable page which contains the title heading "Welcome to SiteStorage" and underneath that the subheading "Please register / login" with two buttons to go to the page of their choice. [View](https://github.com/MSierag/SiteStorage/blob/main/static/images/testing/welcome.png?raw=true)
-        2. Pushing these buttons leads to the corresponding page where the user can still change their mind and be redirected to the other page. There is no button on either of those pages leading back to the Welcome page as casual visitors are not intended to even reach this app. 
-        3. Text has intentionally been kept to an absolute minimum.
+        1. Upon reaching the Welcome page, users are automatically greeted with the clean and easily readable page which contains the background image of a vinyl record playing with the text 'Your vintage record in stock here' and a button labelled 'Shop Now'. [View](https://github.com/MSierag/SiteStorage/blob/main/static/images/testing/welcome.png?raw=true)
+        2. Text has intentionally been kept to an absolute minimum. 
+        3. At the top of the page are the top navigation bar which contains the Spincycle name and the main navigation bar below that which contains the various product categories.
+    5. As a visiting user, I want to be able to easily navigate throughout the site
+        1. The top of every page is reserved for the navigation bars. 
+        2. The top navigation bar contains the Spincycle name (which also serves as a link to the Welcome page), the search bar and to the right the links to 'My Account' and the shopping bag with the current amount to be charged.
+        3. Below the top navigation bar is the main navigation bar which contains the buttons for 'All Products', 'Vinyl', Cd's' and 'Special Offers'. Each of these contains a dropdown menu with further sub-classifications to allow the customer to drill down to their desired product category.
+        4. The main navigation bar is reduced to a hamburger menu on mobile screens. The distinction between top and main navigation bar is otherwise not visible to the users.
+        5. The various buttons on the respective pages are clearly marked and provide the expected functionality. The functionality is confirmed by flash messages.
+    6. As a visiting user, I want to be able to search for specific items
+        1. The top navigation bar which is always visible on all screens contains a search bar
+        2. The main navigation bar below that contains the buttons for 'All Products', 'Vinyl', Cd's' and 'Special Offers'. Each of these contains a dropdown menu with further sub-classifications to allow the customer to drill down to their desired product category. 
+    7. As a visiting user, I want to be able to make a purchase
+        1. The ability to make a purchase is available to all users. It intentionally does not require the creation of an account or a login process.
+    8. As a visiting user, I want to be able to distinguish between categories
+        1. The main navigation bar contains the buttons for 'All Products', 'Vinyl', Cd's' and 'Special Offers'. Each of these contains a dropdown menu with further sub-classifications to allow the customer to drill down to their desired product category.
+        2. When the user selects a particular subcategory, the page will display the selected category below the 'Products' heading.
+        3. When the user selects the bottom option of the individual dropdown menus ('All Products', 'All vinyl', 'All CD's' and 'All Specials'), the page will display the available sub-categories for that category as buttons. For instance in 'All vinyl' the page will have the buttons 'Classical vinyl', 'Pop-vinyl', 'Folk-vinyl' and 'Oldies-vinyl'. 
+    9. As a visiting user, I want to be able to register/create a profile
+        1. The top navigation bar contains the link 'My Account' which when selected displays the dropdown menu of 'Register' and 'Login'
+        2. The checkout form also contains the call to create an account or login.
+        3. Selecting 'Register' in the top navigation bar or 'Create an account' in the checkout form leads the user to the Sign up page.
 
 -   #### Registered User Goals
 
