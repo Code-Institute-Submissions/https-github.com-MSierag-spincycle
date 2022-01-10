@@ -344,35 +344,23 @@ It is listed as a known issue.
 -   On mobile devices with a screen narrower than 360px the contents of the card section on index.html pushed out of alignment.
     -   Text and text on buttons disappears from view as a result.
 
-### Bug fix
-
-During testing it turned out if a user logged out, clicking on the logo would return them to the All Items page anyway. This was fixed by wrapping the link in a condition depending on the user having a valid session cookie.
-
-```
-{% if session.user %}
-    <a href="{{ url_for('get_items') }}" class="brand-logo">Site storage</a>
-{% else %}
-    <a href="{{ url_for('welcome') }}" class="brand-logo">Site storage</a>
-{% endif %}
-```
-
 ## Deployment
 
 ### GitHub
 
-The project is run on GitHub, but deployed to Heroku and uses MongeDB for the database:
+The project is run on GitHub, but deployed to Heroku and uses AWS S3 for the static files:
 
 #### Forking the GitHub Repository
 
 By forking the GitHub Repository you make a copy of the original repository on your GitHub account to view and/or make changes without affecting the original repository by using the following steps:
 
-1. Log in to GitHub and locate the [SiteStorage repository](https://github.com/)
+1. Log in to GitHub and locate the [Spincycle repository](https://github.com/)
 2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. You should now have a copy of the original repository in your GitHub account.
 
 #### Making a Local Clone
 
-1. Log in to GitHub and locate the [SiteStorage repository](https://github.com/)
+1. Log in to GitHub and locate the [Spincycle repository](https://github.com/)
 2. Under the repository name, click "Clone or download".
 3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
 4. Open Git Bash
@@ -386,34 +374,6 @@ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
 7. Press Enter. Your local clone will be created.
 
 Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
-
-### MongoDB
-
-#### Create the database
-
-1. Login or register with MongoDB
-2. Create a cluster and a database
-3. Create three collections in the database: users, items and locations
-4. Add the key:value pairs for each of the collections per the [schema](#database-schema)
-
-#### Create the environment variables
-
-1. Create a `.gitignore` file in the root directory of the project in Github
-2. Add the `env.py` file to the `.gitignore` file 
-3. Create the `env.py` file in the root directory of the project in Github
-4. Enter the environment variables in the `env.py` file:
-
-```
-    import os
-
-    os.environ.setdefault("IP", "insert IP here")
-    os.environ.setdefault("PORT", "insert port here")
-    os.environ.setdefault("SECRET_KEY", "insert secret key")
-    os.environ.setdefault("MONGO_URI", "insert mongo uri")
-    os.environ.setdefault("MONGO_DBNAME", "insert mongo db name")
-```
-
-For more information on creating a MongoDB database click [here](https://docs.atlas.mongodb.com/)
 
 ### Heroku
 
@@ -436,35 +396,298 @@ Open the Procfile and ensure there is no blank line at the end of the file as th
 
 1. Sign in or create an account on [Heroku](https://www.heroku.com)
 2. Provide a unique app name, select region and click Create app
+3. After the app has been created, click on the Resources tab and in Add ons type in and then select "Heroku Postgres". This will create a DATABASE_URL in the Config Vars.
 
 #### Connect to Github repository
 
 1. On the Heroku dashboard, select the Deploy tab
 2. In the Deployment method section, select Github
-3. Enter your repository name and select Search, once it has found your repository select Connect
-4. Next, select the Settings tab on the Heroku dashboard
-5. Click Reveal Config Vars and enter the same environment variables from your `env.py` file
-6. Click Hide Config Vars
-7. In your Github terminal, use the following commands to push your requirements.txt and Procfile 
-
+3. Enter your repository name and select Search, once it has found your repository select Connect and enable automatic deployments
+4. Now go back to your Github terminal and type `pip3 install dj_database_url` followed by `pip3 install psycopg2-binary` to enable use of the HerokuPostgres database.
+5. Next type `pip3 freeze > requirements.txt` in the terminal
+6. In the settings.py file import dj_database_url and comment out the default DATABASES
+7. Set up a new database connection by typing in 
 ```
-    $ git add requirements.txt
-    $ git commit -m "Add requirements.txt file."
-    $ git add Procfile 
-    $ git commit -m "Add procfile."
-    $ git push 
+DATABASES = {
+    "default": dj_database_url.parse("HerokuPostgresdatabase_url which can be found in the Heroku Config Vars")
+}
 ```
-8. On the Heroku dashboard, return to the Deploy tab and select Automatic deploys followed by Deploy Branch (main)
-
-Heroku will now start the deployment, this may take a while. When successfully deployed, you can select Open App which will open your live site in another tab.
+8. Still in the Github terminal, type the following
+```
+    $ python3 manage.py showmigrations
+    $ python3 manage.py migrate
+    $ python3 manage.py loaddata categories
+    $ python3 manage.py loaddata products
+    $ python3 manage.py createsuperuser
+```
+This will correctly populate the database with categories and products.
+9. In settings.py replace the DATABASES code with the following:
+```
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+```
+10. In the terminal type
+```
+    $ pip3 install gunicorn
+    $ pip3 freeze > requirements.txt
+```
+11. Next, create a Procfile and type in:
+```
+web: gunicorn spincycle.wsgi:application
+```
+12. Login to Heroku using the command line by typing:
+```
+    $ npm install -g heroku
+    $ heroku login -i
+    (you will now be asked for your email and password)
+    $ heroku config:set DISABLE_COLLECTSTATIC=1 --app (your app name here)
+```
+You can also set the DISABLE_COLLECTSTATIC in the Heroku Config Vars.
+13. Add your Heroku app to settings.py Allowed hosts section
+```
+['your Heroku app url here', 'localhost']
+```
+14. Push to Github and Heroku
+15. Generate a Django secret key and add it to the Heroku Config Vars as SECRET_KEY
+16. In settings.py set SECRET_KEY to 
+```
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
+```
+and DEBUG to
+```
+DEBUG = 'DEVELOPMENT' in os.environ
+```
+17. In Heroku in the Deploy tab set the connection to your Github repository to automatic deployment.
+18. Push your code to Github, this should start the deployment of your app on Heroku. 
 
 For more information on Heroku deployment click [here](https://devcenter.heroku.com/start)
+
+### AWS S3
+
+#### How to set up AWS S3
+
+1. Go to [AWS](https://aws.amazon.com/) and login to your account. If you don't have an account, create one. If you have to create an account be mindful that you will need to enter your card details, no billing will occur unless you go over the free tier limit.
+
+2. After logging in, go to the [S3](https://console.aws.amazon.com/s3/) and create a bucket.
+
+3. Make sure you name your bucket the same as you did for Heroku and choose the nearest region to your location.
+
+4. Scroll down to the "Block Public Access" section and unchecked the "Block public access" checkbox. Confirm that you want to allow access to the bucket. Scroll down to the bottom of the page and click on "Create bucket"
+
+---
+
+#### Customizing the bucket properties
+
+1. Click on the Properties tab. Scroll to the end of that page and click on edit button.
+
+2. At the top it will allow you to choose between "Enable" and "Disable" static website hosting. Choose Enable.
+
+3. The section below will allow you to select "Host a static website", Select "Host a static website" and then scroll down to the index "Document inputs"
+
+4. In the input field, enter the home file which is the "index.html" file and in the error field, enter "error.html".
+
+5. Leave the redirection rules empty and click on "Save changes".
+
+---
+
+#### Setting up the Permissions
+
+1. Next, go to the permissions tab. Scroll down to the bottom of the page and click edit the "Cross-Origin Resource Sharing (CORS)" section.
+
+2. Add the following lines:
+
+```
+[{
+  "AllowedHeaders": ["
+  Authorization"
+  ],
+  "AllowedMethods": [
+    "Get"
+    ],
+  "AllowedOrigins": [
+    "*"
+    ],
+  "ExposeHeaders": [],
+}]
+
+```
+
+3. Save the changes. Navigate to "Bucket Policy" section and click "edit"
+
+#### Generating A Bucket Policy
+
+1. Click on the "Policy Generator" button. Select "S3 Bucket Policy" from the dropdown list.
+
+2. You will need to set following permissions:
+
+   - Effect – Allow
+   - Principle - \*
+   - Actions – GetObject, GetObjectAcl, PutObject, PutObjectAcl and DeleteObject
+   - Amazon Resource Name – This can be found on the previous page, under "Bucket ARN". Copy and paste it into this box
+
+3. After these have been entered, click "Add Statemen" and "Generate Policy".
+
+4. Copy the policy into the bucket policy editor, adding `/*` onto the end, the click "Save Changes".
+
+---
+
+#### Access Control List
+
+1. While in the permissions tab, click "edit" under the "Access Control List" section.
+
+2. Next, navigate to "Everyone (public access)" and tick the box on the left, "List" under the "Objects" heading. Tick the box that you understand the effect then click on "Save Changes".
+
+---
+
+#### Creating A Group and Policy with IAM
+
+1. Next, search for IAM in the search bar at the top, and click on it to set up a group policy.
+
+2. Under "Access Management", Select "User Groups" and create a new group.
+
+3. Give the group a name (try keep it relational to the project name) and click "Create Group".
+
+4. This will bring you to the IAM dashboard. Go to the "Access Management" section, and click on "Policies".
+
+5. Click "Create Policy" and click on the JSON tab, and select "Import Managed Policy".
+
+6. Search for "AmazonS3FullAccess" and select it, then Import".
+
+7. Copy your ARN and place it in the code twice (the second time with `/*`) so that it looks like the following;
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*",
+                "s3-object-lambda:*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::YOUR-ARN",
+                "arn:aws:s3:::YOUR-ARN/*"
+            ]
+        }
+    ]
+}
+```
+
+8. Select "Next: Tags", "Next: Review", Enter a name and click on "Create Policy".
+
+---
+
+#### Attaching the Group Policy
+
+1. Go to "User Groups", under "Access Management". Click on the your newly created group and go over to the "Permissions" tab
+
+2. Select the "Add Permissions" button, and select "Attach Policy".
+
+3. Search for and click on the checkbox next to the policy you have just created, then Select "Add Permissions".
+
+---
+
+#### Create User for IAM
+
+1. Head back to the IAM dashboard, click on "Users", then "Add User".
+
+2. Choose a name and tick the checkbox to give the user access, then select "Next: Permissions".
+
+3. Select the group to put the user in and keep clicking the next buttons until the very end and click "Create user".
+
+4. Click on “Download .csv” file (**Keep this is a secure location as you wont be able to get these details again**), as you will not have access to this page again! This file will contain information required as shown in the Heroku table above.
+
+---
+
+### Github
+
+1. In the terminal type 
+```
+    $ pip3 install boto3
+    $ pip3 install django-storages
+    $ pip3 freeze > requirements.txt
+```
+2. In settings.py in the Installed apps section add 'storages'. Under the MEDIA_ROOT add the following:
+```
+if 'USE_AWS' in os.environ:
+    
+
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'your bucket name'
+    AWS_S3_REGION_NAME = 'your region here'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+```
+
+---
+
+### Heroku
+
+1. In the Config Vars add the AWS_ACCESS_KEY_ID and the AWS_SECRET_ACCESS_KEY as well as setting USE_AWS to 'True' and removing the DISABLE_COLLECTSTATIC.
+
+### Github
+
+1. Create a custom_storages.py file and type the following:
+```
+from django.conf import settings
+from storages.backends.s3boto3 import S3Boto3Storage
+
+
+class StaticStorage(S3Boto3Storage):
+    location = settings.STATICFILES_LOCATION
+
+
+class MediaStorage(S3Boto3Storage):
+    location = settings.MEDIAFILES_LOCATION
+```
+2. In settings.py add cache control to the if USE_AWS statement under MEDIA_ROOT:
+```
+# Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+```
+3. Push your code to Github
+
+### Saving Images To S3 Bucket
+
+If you need to save images to your S3 bucket, you will need to do the following;
+
+1. Go to the S3 dashboard and click on the bucket you want to save the images to.
+
+2. Click "Create Folder", call it "media" and click the second "Create Folder" button.
+
+3. When you are in this folder, click "Upload", then 'Add Files" or "Add Folder", then "Upload".
+
+---
+
+### Stripe
+
+1. Don't forget to add the STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY to the Heroku Config Vars as well as any other variables you may have.
 
 ## Credits
 
 ### Code
 
--   The bulk of this app was built using the code for the Boutique Ado mini-project of CodeInstitute. 
+-   This app was built using the code for the Boutique Ado mini-project of CodeInstitute. Frankly, Django has me beat thus far, but I look forward to continuing to learn. 
 
 ### Images
 
