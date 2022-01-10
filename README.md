@@ -218,12 +218,12 @@ The W3C Markup Validator, W3C CSS Validator Services and JSHint were used to val
 I used Google Lighthouse to audit the site's performance, accessibility, use of best practices and search engine optimization.
 
 Testing resulted in the following [score](https://github.com/MSierag/SiteStorage/blob/main/static/images/lighthouse.png?raw=true):
--   Performance: 99%
--   Accessibility: 92%
+-   Performance: 85%
+-   Accessibility: 74%
 -   Best Practices: 87%
 -   SEO: 91%
 
-The 87% in Best Practices was due to the deployed Heroku site not being secured ( http:// instead of https:// ). This unfortunately is beyond my control and is therefore left as it is. 
+The Performance score was negatively impacted by AWS and Stripe cache policies. The Accessibility score of 74% was among other things caused by the non-sequential use of headers on the Welcome Page. The text on the Shop Now button is larger than the text in the Free delivery banner. Also, some icons which are used as buttons are not explicitly declared as such in the HTML. The 87% in Best Practices was due to browser errors logged to the console caused by Stripe. 
 
 ### Responsiveness testing
 
