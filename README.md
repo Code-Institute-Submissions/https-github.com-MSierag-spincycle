@@ -1,13 +1,11 @@
 <h1 align="center">Spincycle Records</h1>
 
-[View the live project here.](https://github.com/MSierag/SiteStorage)
+[View the live project here.](https://github.com/MSierag/spincycle)
 [or view it here](https://spincycle-records.herokuapp.com/)
 
 ## Purpose of the website
 
-This is a simple app for inventory management on a construction site. In my previous career I was fortunate enough to work on a few construction sites for a German mulitinational, where I was responsible for site logistics. This company had an integrated system for delivery tracking, but this was only available for the large items sent to site by the logistics department. However, the construction team received daily deliveries of small items which sometimes went missing as they were untracked or the information wasn't shared.  
-
-The purpose of this app is to provide an easy to use platform for a construction team to track any and all small deliveries. It is intented to be made available only to the construction team to facilitate the communication between them. It's intentionally devoid of images and frills to facilitate readability in a construction environment. The website is designed to be responsive and accessible on a range of devices, making it easy to navigate for potential users.
+This is a website for a webshop in previously owned records.
 
 ## User Experience (UX)
 
