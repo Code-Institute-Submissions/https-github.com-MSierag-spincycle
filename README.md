@@ -46,19 +46,19 @@ This is a website for a webshop in previously owned records.
         The use of colours has been kept to an absolute minimum on this site so as not to interfere with the product images. The background is kept white and the text black. The only time colours are used they are used for accents on messages or icons.
         
         ##### Accent colours
-           ![Coolors rendering of effect colourscheme](https://github.com/MSierag/SiteStorage/blob/main/static/images/accent-colours.png?raw=true)
+           ![Coolors rendering of effect colourscheme](https://github.com/MSierag/spincycle/blob/main/media/screenshots/colours.png?raw=true)
             
     -   #### Typography
         -   The font used throughout the site is 'Lato' from Google Fonts.
 
 *   ### Wireframes
 Due to the high number of pages and limited content on them I decided against creating wireframes in various formats as there would be very little difference between them.
-The wireframes I did make can be viewed here [View](https://github.com/MSierag/SiteStorage/tree/main/static/images/wireframes)
+The wireframes I did make can be viewed here [View](https://github.com/MSierag/spincycle/tree/main/media/wireframes)
 
 ## Database schema
 The database for this website is run through HerokuPostgres, the schema can be found below.
 
-![Dbdiagram.io rendering of the database schema](https://github.com/MSierag/SiteStorage/blob/main/static/images/dbschema.png?raw=true)
+![Dbdiagram.io rendering of the database schema](https://github.com/MSierag/spincycle/blob/main/media/screenshots/dbdiagram.png?raw=true)
 
 
 ## Features
@@ -234,6 +234,8 @@ It is listed as a known issue.
 
 ### Testing User Stories from User Experience (UX) Section
 
+All screenshots for the user stories can be found [here](https://github.com/MSierag/spincycle/tree/main/media/screenshots)
+
 -   #### Owner Goals
     1. As an owner, I want to allow unregistered visitors to shop.
         1. The website allows all users (registered or unregistered) to view items, select them for purchase and complete a purchase without the need to create a profile or login. 
@@ -247,7 +249,7 @@ It is listed as a known issue.
 
     4. As a visiting user, I want to be able to quickly understand the purpose of the site.
 
-        1. Upon reaching the Welcome page, users are automatically greeted with the clean and easily readable page which contains the background image of a vinyl record playing with the text 'Your vintage record in stock here' and a button labelled 'Shop Now'. [View](https://github.com/MSierag/SiteStorage/blob/main/static/images/testing/welcome.png?raw=true)
+        1. Upon reaching the Welcome page, users are automatically greeted with the clean and easily readable page which contains the background image of a vinyl record playing with the text 'Your vintage record in stock here' and a button labelled 'Shop Now'. 
         2. Text has intentionally been kept to an absolute minimum. 
         3. At the top of the page are the top navigation bar which contains the Spincycle name and the main navigation bar below that which contains the various product categories.
 
