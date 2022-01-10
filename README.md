@@ -66,106 +66,106 @@ The database for this website is run through HerokuPostgres, the schema can be f
 ## Features
 -   Top navbar at the top of the page is visible on all pages. The main navbar is visible on screensizes upwards of a tablet.
 
+-   There is a banner below the navbars which informs the user of the free delivery threshold.
+
 ### Existing features
 
 #### Page specific features
 
 ##### Welcome page
 
--   Large title welcomes visitor to Spincycle. 
+-   The page is largely taken up a by close up picture of a record player. 
 
--   A card the text Please register / login below is displayed underneath the title.
+-   On the background picture the bold statement to the user "Your vintage record in stock here" makes the purpose of the site instantly clear. 
 
--   Call to action button labelled "Shop now" which when clicked opens the Products page.
+-   Below the statement is a call to action button labelled "Shop now" which when clicked opens the Products page.
 
--    
+-   Other than the call to action button and the options on the navbars, the page is devoid of text or buttons.
 
 ##### Products page
 
--   Top of the screen shows the navbar which is empty apart from the logo, no further buttons visible to visitors.
+-   Below the navbars and free delivery banner there is a page header which reads "Products".
 
--   Middle section holds a form with fields for Username and Password prefixed by an icon.
+-   Below the header the total number of products is displayed as well as a sort selection box.
 
--   Below the fields is a call to action button labelled "Register" which when clicked has two options:
-        -if the registration was successfull, the user is redirected to the Profile page with a flash message of "You are now registered"
-        -if the registration was unsuccessfull, the user receives a flash message "Username already exists" and is redirected to the Registration page.
+-   The products are displayed as cards with the product image followed by the name, price, category and rating.
+
+-   The product image serves as a button to lead the user to the product's detail page.
 
 ##### Product detail page
 
--   Top of the screen shows the navbar which is empty apart from the logo, no further buttons visible to visitors.
+-   The product image is displayed on the left while the product info is displayed on the right.
 
--   Middle section holds a form with fields for Username and Password prefixed by an icon.  
+-   The product info includes the name, price, category and rating followed by a more detailed description if available.  
 
--   Below the fields is a call to action button labelled "Login" which when clicked has two options:
-        -if the login was successfull, the user is redirected to the Home page with a flash message of "Welcome (username)" 
-        -if the login was unsuccessfull, the user is redirected to the Login page with a flash message of "Username and / or password incorrect".
+-   Below the product info is a quantity selection box which is set to 1 by default.
 
-##### Profile page
+-   Finally there are two buttons, one labelled "Keep Shopping" which when selected takes the user back to the Products page. The other button is labelled "Add to bag" which when selected adds the item to the shopping bag and causes a success message to be displayed in the top right hand corner of the screen.
 
--   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
+##### Shopping bag page 
 
--   Middle section is formed by a card which displays the message "(username) logged in successfully".  
+-   Below the navbars and free delivery banner there is a page header which reads "Shopping bag".
 
--   Below this section is a simple statement invites the user to select a task above. 
+-   The contents of the shopping bag are displayed in a table with four columns: Product Info, Price, Quantity and Subtotal
 
-##### Shopping bag page
+-   Each product in the shopping bag is displayed as a row in this table. 
 
--   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
+-   In the bottom right hand side of the screen below the last product are displayed the Bag total, Delivery cost, Grand Total and the message on which additional amount spent would secure the free delivery if the threshold hasn't been met.
 
--   Below the navbar the page title of All Items is displayed.
-
--   Below the title is a search field with two buttons to the right, Reset and Search. This allows the user to search the    items listed below.
-
--   Middle section holds a collapsible  which displays all items in the database. The collapsed items displays a down caret, two buttons Edit and Used, the item name and the date it was received. When the user selects the down caret, the unfolded item shows the storage location, the item description and who took receipt of it. 
-    -   The Used button serves as the delete function. When pushed, the item is deleted from the database and the user receives a flash message of "Item deleted"
-    -   The Edit button when pushed redirects the user to the Edit Item page
-
-##### Product Management page
-
--   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
-
--   Below the navbar the page title of Add Item is displayed.
-
--   Middle section holds a form with fields to be completed by the user to add a new item to the database. The first field is a dropdown menu for the storage location, followed by Item Name, Item Description and Date received. The latter is a date picker. 
-
--   At the bottom of the form is a large button labelled Add item which when pushed has two possible outcomes:
-    -if all fields were filled out correctly, the user is redirected to the Home page where the item has been added to the list and a flash message reads "Item added successfully"
-    -if all fields were not filled out correctly, the user is alerted to the missing or incorrect information by the validation functionality.
-
-##### Sign up page
-
--   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
-
--   Below the navbar the page title of Edit Item is displayed.
-
--   Middle section holds a form with prefilled fields to be edited by the user to edite the item in the database.
-
--   At the bottom of the form there are two large buttons labelled Cancel and Edit Item 
-    -Cancel takes the user back to the Home page 
-    -Edit Item will, if all fields were filled out correctly, redirect the user to Home page with a flash message of "Item updated successfully" 
-    -Edit Item will, if all fields were not filled out correctly, alert the user to the missing or incorrect information by the validation functionality.
-
-##### Sign in page
-
--   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
-
--   Below the navbar the page title of Manage Locations is displayed.
-
--   Below the title is a large button labelled Add Location which when pushed redirects the user to the Add Location page.
-
--   Middle section holds a collection of cards which display all locations currently in the database. The cards have two buttons Delete and Edit 
-    -   The Delete button deletes the location from the database and the user receives a flash message of "Location deleted successfully"
-    -   The Edit button when pushed redirects the user to the Edit Location page
+-   Finally, there are two buttons: one labelled "Keep Shopping" which when selected takes the user back to the Products page. The other button is labelled "Secure Checkout" which when selected takes the user to the Checkout page. 
 
 ##### Checkout page
 
--   Top of the screen shows the navbar which now show the buttons "Home", "New item", "Locations" and "Logout".
+-   The Checkout page displays the order form to be completed on the left and the items in the shopping bag on the right.
 
--   Below the navbar the page title of Add Location is displayed.
+-   If the user is logged in and has previously saved their delivery information this will be pre-filled in the relevant section of the order form.
 
--   Middle section holds a form with a single field to be completed by the user to add a new location to the database. 
+-   The customer is required to fill out their Full Name and Email as well as put in their credit card information.
 
--   At the bottom of the form is a large button labelled Add location which when pushed redirects the user to the Locations page where the new location has been added and a flash message of "New storage location added".
+-   Below the order form are two buttons: one labelled "Adjust bag" which when selected takes the user back to the Shopping bag page. The other button is labelled "Complete Order" which when selected starts the payment process.
+
+##### Sign up page
+
+-   Below the navbars and free delivery banner there is a page header which reads "Sign up".
+
+-   The user is asked to Log in if they already have an account.
+
+-   The registration form requires the user to enter an email adress and confirm this, a user name and a password which also needs to be confirmed. 
+
+-   Below the form are two buttons: one labelled "Back to login" which when selected takes the user to the Sign in page. The other button is labelled "Sign up" which when selected takes the user to the verification page. Here the user is informed that a verification email has been sent to their email address.
+
+##### Sign in page
+
+-   Below the navbars and free delivery banner there is a page header which reads "Sign in".
+
+-   The user is asked to Sign up first if they do not already have an account.
+
+-   The log in form requires the user to enter their username or email and their password. 
+
+-   The user has the option to tick a "Remember Me" box
+
+-   At the bottom of the form there are two buttons: one labelled "Home" which when selected takes the user back to the Welcome page. The other button is labelled "Sign in" which when selected and provided the sign in was successful will take the user back to the Welcome page with a success message displayed in the top right hand corner. 
+
+##### Profile page
+
+-   Below the navbars and free delivery banner there is a page header which reads "My Profile".
+
+-   Any Default delivery information the user has previously saved is displayed here on the left.
+
+-   Below the form is a button labelled "Update information" 
+
+-   On the right hand side the Order history information for this user is displayed.
+
+
+##### Product Management page
+
+-   Below the navbars and free delivery banner there is a page header which reads "Product Manageent".
+
+-   The form to be completed contains fields for Category, SKU, Name (required), Description (required), Has sizes, Price (required), Rating and Image URL.
+
+-   Below the Image URL field is a button labelled "Select Image". 
+
+-   At the bottom of the form there are two buttons: one labelled "Cancel" which when selected takes the user back to the Welcome page. The other button is labelled "Add Product" which when selected and provided the form was filled out correctly will take the user back to the Products page with a success message displayed in the top right hand corner.
 
 ### Future features
 
@@ -191,7 +191,7 @@ The database for this website is run through HerokuPostgres, the schema can be f
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 1. [GitHub:](https://github.com/)
     - GitHub is used to store the projects code after being pushed from Git.
-1. [AWS:](https://www.mongodb.com/)
+1. [AWS:](https://www.aws.amazon.com/)
     - AWS S3 is used as storage for static files. 
 1. [Heroku:](https://heroku.com/)
     - Herokuapp is the platform used to display the project after being pushed from Git.
